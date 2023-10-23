@@ -1,18 +1,18 @@
-.livro {
+.book {
   width: 280px;
 }
 
-.livro__cabecalho {
+.book__header {
   background-color: var(--light-color);
   border-radius: 10px 10px 0px 0px;
 }
-.livro img {
+.book img {
   height: 200px;
   position: relative;
   bottom: -50px;
 }
 
-.livro__rodape {
+.book__footer {
   background: var(--light-color);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
   border-radius: 0px 0px 10px 10px;
@@ -20,7 +20,7 @@
   padding-bottom: 40px;
 }
 
-.livro__rodape h4 {
+.book__footer h4 {
   color: var(--secondary-color);
   font-size: 18px;
   line-height: 22px;
@@ -28,7 +28,7 @@
   margin-bottom: 8px;
 }
 
-.livro__rodape h5 {
+.book__footer h5 {
   font-size: 18px;
   line-height: 22px;
   color: #212121;
