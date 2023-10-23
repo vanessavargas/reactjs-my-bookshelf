@@ -3,14 +3,13 @@ import Banner from "./componentes/Banner";
 import Form from "./componentes/Form";
 import Rodape from "./componentes/Footer/Footer";
 import Category from "./componentes/Category";
-import Button from "./componentes/Button";
 
 function App() {
   const categories = [
     {
       nome: "Desenvolvimento Pessoal",
-      corPrimaria: "#C4D4B5",
-      corSecundaria: "#94A684",
+      corPrimaria: "#FFF5F9",
+      corSecundaria: "#BA8D90",
     },
     {
       nome: "Desenvolvimento de Software",
@@ -24,13 +23,13 @@ function App() {
     },
     {
       nome: "Lógica na Ficção: Desafios Mentais",
-      corPrimaria: "#FFF5F9",
-      corSecundaria: "#FFEEF4",
+      corPrimaria: "#C4D4B5",
+      corSecundaria: "#94A684",
     },
     {
       nome: "Outros",
-      corPrimaria: "#C4D4B5",
-      corSecundaria: "#94A684",
+      corPrimaria: "#D9E8D9",
+      corSecundaria: "#AEC3AE",
     },
   ];
 
@@ -94,8 +93,7 @@ function App() {
     {
       title: "Não Me Faça Pensar",
       author: "Steve Krug",
-      image:
-        "https://m.media-amazon.com/images/I/51i8-f+QMFL._SY385_.jpg",
+      image: "https://m.media-amazon.com/images/I/51i8-f+QMFL._SY385_.jpg",
       category: categories[2].nome,
     },
     {
@@ -108,15 +106,13 @@ function App() {
     {
       title: "O Teste da Mãe",
       author: "Rob Fitzpatrick",
-      image:
-        "https://m.media-amazon.com/images/I/6163jHQ-adL._SY385_.jpg",
+      image: "https://m.media-amazon.com/images/I/6163jHQ-adL._SY385_.jpg",
       category: categories[2].nome,
     },
     {
       title: "Roube Como um Artista",
       author: "Austin Kleon",
-      image:
-        "https://m.media-amazon.com/images/I/81FOzurNqvL._SY385_.jpg",
+      image: "https://m.media-amazon.com/images/I/81FOzurNqvL._SY385_.jpg",
       category: categories[2].nome,
     },
     {
@@ -149,55 +145,66 @@ function App() {
   ];
 
   const [books, setBooks] = useState(inicial);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const [showModal, setShowModal] = useState(false);
+  const handleButtonClick = () => {
+    setShowModal(true);
   };
 
   const deleteBook = (book) => {
     const newListBooks = books.filter((bookExists) => bookExists !== book);
-  setBooks(newListBooks);
-  }
+    setBooks(newListBooks);
+  };
 
   const aoNovoBookAdicionado = (book) => {
-    setBooks([...books, book])
-  }  
+    setBooks([...books, book]);
+  };
 
   return (
     <div>
-      <Banner openModal={openModal} />
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-          <Form
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        categories={categories.map((category) => category.nome)}
-        aoSalvar={book => aoNovoBookAdicionado(book)}/>
-      <Button texto="Fechar Modal" onClick={closeModal} />
-      </div>
-        </div>
-      )}
-      
-      <Form
-        categories={categories.map((category) => category.nome)}
-        aoSalvar={book => aoNovoBookAdicionado(book)}/>
-      <section className="categories">
+      <Banner />
+      <div className="modal">
         <h1>Minha estante</h1>
+        <button className="button-form" onClick={handleButtonClick}>
+          Cadastrar novo livro
+        </button>
+        {showModal && (
+          <div className="modal__fixed">
+            <div className="modal__relative">
+              <div className="modal__rounded">
+                  <h3 className="text-center">
+                    Insira um novo livro
+                  </h3>
+                  <div className="space-y-6">
+                    <Form
+                      categories={categories.map((category) => category.nome)}
+                      aoSalvar={(book) => aoNovoBookAdicionado(book)}
+                    />
+                    <button
+                      className="button-form"
+                      onClick={() => setShowModal(false)}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* <Form
+        categories={categories.map((category) => category.nome)}
+        aoSalvar={(book) => aoNovoBookAdicionado(book)}
+      /> */}
+      <section className="categories">
         {categories.map((category, indice) => (
           <Category
             key={indice}
             category={category}
             corPrimaria={category.corPrimaria}
             corSecundaria={category.corSecundaria}
-            books={books.filter(
-              book => book.category === category.nome
-            )}
+            books={books.filter((book) => book.category === category.nome)}
             aoDeletar={deleteBook}
           />
         ))}
