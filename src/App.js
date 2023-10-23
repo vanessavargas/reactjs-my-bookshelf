@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Banner from "./componentes/Banner";
-import Formulario from "./componentes/Formulario";
+import Form from "./componentes/Form";
 import Rodape from "./componentes/Rodape";
-import Categoria from "./componentes/Categoria";
+import Category from "./componentes/Category";
 
 function App() {
-  const categorias = [
+  const categories = [
     {
       nome: "Desenvolvimento Pessoal",
       corPrimaria: "#C4D4B5",
@@ -30,143 +30,147 @@ function App() {
 
   const inicial = [
     {
-      titulo: "Poder Sem Limites",
-      autor: "Tony Robbins",
-      imagem:
+      title: "Poder Sem Limites",
+      author: "Tony Robbins",
+      image:
         "https://m.media-amazon.com/images/I/41g4LbKBBGL._SY445_SX342_.jpg",
-      categoria: categorias[0].nome,
+      category: categories[0].nome,
     },
     {
-      titulo: "Atenção Plena: Mindfulness",
-      autor: "D. Penman, M. Williams",
-      imagem:
+      title: "Atenção Plena: Mindfulness",
+      author: "D. Penman, M. Williams",
+      image:
         "https://m.media-amazon.com/images/I/41MT2uBJsRL._SY445_SX342_.jpg",
-      categoria: categorias[0].nome,
+      category: categories[0].nome,
     },
     {
-      titulo: "Mais Esperto que o Diabo",
-      autor: "Napoleon Hill",
-      imagem:
+      title: "Mais Esperto que o Diabo",
+      author: "Napoleon Hill",
+      image:
         "https://m.media-amazon.com/images/I/512TscpFEVL._SY445_SX342_.jpg",
-      categoria: categorias[0].nome,
+      category: categories[0].nome,
     },
     {
-      titulo: "O Poder do Hábito",
-      autor: "Charles Duhigg",
-      imagem:
+      title: "O Poder do Hábito",
+      author: "Charles Duhigg",
+      image:
         "https://m.media-amazon.com/images/I/51Pw06uU8FL._SY445_SX342_.jpg",
-      categoria: categorias[0].nome,
+      category: categories[0].nome,
     },
     {
-      titulo: "Clean Code",
-      autor: "Robert C. Martin",
-      imagem:
+      title: "Clean Code",
+      author: "Robert C. Martin",
+      image:
         "https://m.media-amazon.com/images/I/41SH-SvWPxL._SY445_SX342_.jpg",
-      categoria: categorias[1].nome,
+      category: categories[1].nome,
     },
     {
-      titulo: "Padrões de Projetos",
-      autor: "Erich Gamma e outros",
-      imagem:
+      title: "Padrões de Projetos",
+      author: "Erich Gamma e outros",
+      image:
         "https://m.media-amazon.com/images/I/51bO3rI8hEL._SY445_SX342_.jpg",
-      categoria: categorias[1].nome,
+      category: categories[1].nome,
     },
     {
-      titulo: "Refatoração",
-      autor: "Martin Fowler",
-      imagem:
+      title: "Refatoração",
+      author: "Martin Fowler",
+      image:
         "https://m.media-amazon.com/images/I/51evX6wfYNL._SY445_SX342_.jpg",
-      categoria: categorias[1].nome,
+      category: categories[1].nome,
     },
     {
-      titulo: "O Programador Pragmático",
-      autor: "A. Hunt, D. Thomas",
-      imagem:
+      title: "O Programador Pragmático",
+      author: "A. Hunt, D. Thomas",
+      image:
         "https://m.media-amazon.com/images/I/41WH7HFsbzL._SY445_SX342_.jpg",
-      categoria: categorias[1].nome,
+      category: categories[1].nome,
     },
     {
-      titulo: "Não Me Faça Pensar",
-      autor: "Steve Krug",
-      imagem:
+      title: "Não Me Faça Pensar",
+      author: "Steve Krug",
+      image:
         "https://m.media-amazon.com/images/I/51i8-f+QMFL._SY385_.jpg",
-      categoria: categorias[2].nome,
+      category: categories[2].nome,
     },
     {
-      titulo: "A Psicologia das Cores",
-      autor: "Eva Heller",
-      imagem:
+      title: "A Psicologia das Cores",
+      author: "Eva Heller",
+      image:
         "https://m.media-amazon.com/images/I/41RuWuRzqsL._SY445_SX342_.jpg",
-      categoria: categorias[2].nome,
+      category: categories[2].nome,
     },
     {
-      titulo: "O Teste da Mãe",
-      autor: "Rob Fitzpatrick",
-      imagem:
+      title: "O Teste da Mãe",
+      author: "Rob Fitzpatrick",
+      image:
         "https://m.media-amazon.com/images/I/6163jHQ-adL._SY385_.jpg",
-      categoria: categorias[2].nome,
+      category: categories[2].nome,
     },
     {
-      titulo: "Roube Como um Artista",
-      autor: "Austin Kleon",
-      imagem:
+      title: "Roube Como um Artista",
+      author: "Austin Kleon",
+      image:
         "https://m.media-amazon.com/images/I/81FOzurNqvL._SY385_.jpg",
-      categoria: categorias[2].nome,
+      category: categories[2].nome,
     },
     {
-      titulo: "AGATHA CHRISTIE",
-      autor: "Mistério no Caribe",
-      imagem:
+      title: "AGATHA CHRISTIE",
+      author: "Mistério no Caribe",
+      image:
         "https://m.media-amazon.com/images/I/41p61Bvg4hL._SY445_SX342_.jpg",
-      categoria: categorias[3].nome,
+      category: categories[3].nome,
     },
     {
-      titulo: "AGATHA CHRISTIE",
-      autor: "Morte na Rua Hickory",
-      imagem: "https://m.media-amazon.com/images/I/81JIIC-o+fL._SL1500_.jpg",
-      categoria: categorias[3].nome,
+      title: "AGATHA CHRISTIE",
+      author: "Morte na Rua Hickory",
+      image: "https://m.media-amazon.com/images/I/81JIIC-o+fL._SL1500_.jpg",
+      category: categories[3].nome,
     },
     {
-      titulo: "SIDNEY SHELDON",
-      autor: "A Outra Face",
-      imagem:
+      title: "SIDNEY SHELDON",
+      author: "A Outra Face",
+      image:
         "https://m.media-amazon.com/images/I/41cPRsiFQOL._SY445_SX342_.jpg",
-      categoria: categorias[3].nome,
+      category: categories[3].nome,
     },
     {
-      titulo: "KEN FOLLETT",
-      autor: "As espiãs do Dia D",
-      imagem:
+      title: "KEN FOLLETT",
+      author: "As espiãs do Dia D",
+      image:
         "https://m.media-amazon.com/images/I/51aWnDbhsTL._SY445_SX342_.jpg",
-      categoria: categorias[3].nome,
+      category: categories[3].nome,
     },
   ];
 
-  const [livros, setLivros] = useState(inicial);
+  const [books, setBooks] = useState(inicial);
 
-  function deletarLivro() {
-    console.log("deletando livro");
+  const deleteBook = () => {
+    console.log("deletando book");
+  }
+
+  const aoNovoBookAdicionado = (book) => {
+    debugger
+    setBooks([...books, book])
   }
 
   return (
     <div>
       <Banner />
-      <Formulario
-        categorias={categorias.map((categoria) => categoria.nome)}
-        aoCadastrar={livro =>
-          setLivros([...livros, livro])
-        }
-      />
-      <section className="categorias">
+      <Form
+        categories={categories.map((category) => category.nome)}
+        aoBookCadastrado={book => aoNovoBookAdicionado(book)}/>
+      <section className="categories">
         <h1>Minha estante</h1>
-        {categorias.map((categoria, indice) => (
-          <Categoria
+        {categories.map((category, indice) => (
+          <Category
             key={indice}
-            categoria={categoria}
-            livros={livros.filter(
-              livro => livro.categoria === categoria.nome
+            category={category}
+            corPrimaria={category.corPrimaria}
+            corSecundaria={category.corSecundaria}
+            books={books.filter(
+              book => book.category === category.nome
             )}
-            aoDeletar={deletarLivro}
+            aoDeletar={deleteBook}
           />
         ))}
       </section>

@@ -1,60 +1,63 @@
 import { useState } from "react";
-import Botao from "../Botao";
-import CampoTexto from "../CampoTexto";
-import ListaSuspensa from "../ListaSuspensa";
-import "./formulario.css";
+import Button from "../Button";
+import TextField from "../TextField";
+import DropdownList from "../DropdownList";
+import "./Form.style.css";
 
-const Formulario = ({ aoCadastrar, categorias }) => {
+const Form = ( props ) => {
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
   const [imagem, setImagem] = useState("");
   const [categoria, setCategoria] = useState("");
 
-  const aoSubmeter = (evento) => {
+  const aoSalvar = (evento) => {
     evento.preventDefault();
-    console.log("form enviado", titulo, autor, imagem, categoria);
-    aoCadastrar({
+    props.aoCadastrarLivro({
       titulo,
       autor,
       imagem,
       categoria,
-    });
+    })
+    setTitulo('')
+    setAutor('')
+    setImagem('')
+    setCategoria('')
   };
 
   return (
-    <section className="formulario-container">
-      <form className="formulario" onSubmit={aoSubmeter}>
-        <h2>Preencha os dados para criar o card do colaborador.</h2>
-        <CampoTexto
+    <section className="form">
+      <form onSubmit={aoSalvar}>
+        <h2>Preencha os dados do livro:</h2>
+        <TextField
           obrigatorio={true}
           label="Titulo"
-          placeholder="Digite seu titulo "
+          placeholder="Digite o titulo"
           valor={titulo}
           aoAlterado={(valor) => setTitulo(valor)}
         />
-        <CampoTexto
+        <TextField
           obrigatorio={true}
           label="Autor"
-          placeholder="Digite seu autor "
+          placeholder="Digite o autor"
           valor={autor}
           aoAlterado={(valor) => setAutor(valor)}
         />
-        <CampoTexto
+        <TextField
           label="Imagem"
           placeholder="Informe o endereço da imagem "
           aoAlterado={(valor) => setImagem(valor)}
         />
-        <ListaSuspensa
+        <DropdownList
           obrigatorio={true}
           label="Categorias"
-          items={categorias}
+          items={props.categories}
           valor={categoria}
           aoAlterado={(valor) => setCategoria(valor)}
         />
-        <Botao texto="Criar card" />
+        <Button texto="Salvar livro" />
       </form>
     </section>
   );
 };
 
-export default Formulario;
+export default Form;
