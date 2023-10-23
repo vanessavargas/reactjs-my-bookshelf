@@ -1,6 +1,6 @@
-import "./campo-texto.css";
+import "./TextField.style.css";
 
-const CampoTexto = ({
+const TextField = ({
   label,
   placeholder,
   valor,
@@ -8,7 +8,7 @@ const CampoTexto = ({
   obrigatorio = false,
 }) => {
   return (
-    <div className="campo-texto">
+    <div className="text-field">
       <label>{label}</label>
       <input
         value={valor}
@@ -20,4 +20,4 @@ const CampoTexto = ({
   );
 };
 
-export default CampoTexto;
+export default TextField;

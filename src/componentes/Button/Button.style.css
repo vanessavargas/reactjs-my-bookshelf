@@ -1,4 +1,4 @@
-.botao {
+.button {
   background: var(--secondary-color);
   border-radius: 10px;
   font-weight: 700;
@@ -10,7 +10,7 @@
   border: none;
 }
 
-.botao:hover {
+.button:hover {
   color: var(--dark-color);
   background-color: var(--light-color);
 }
