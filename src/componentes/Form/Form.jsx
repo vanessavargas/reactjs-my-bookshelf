@@ -5,23 +5,23 @@ import DropdownList from "../DropdownList";
 import "./Form.style.css";
 
 const Form = ( props ) => {
-  const [titulo, setTitulo] = useState("");
-  const [autor, setAutor] = useState("");
-  const [imagem, setImagem] = useState("");
-  const [categoria, setCategoria] = useState("");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [image, setImage] = useState("");
+  const [category, setCategory] = useState("");
 
   const aoSalvar = (evento) => {
     evento.preventDefault();
-    props.aoCadastrarLivro({
-      titulo,
-      autor,
-      imagem,
-      categoria,
+    props.aoSalvar({
+      title,
+      author,
+      image,
+      category,
     })
-    setTitulo('')
-    setAutor('')
-    setImagem('')
-    setCategoria('')
+    setTitle('')
+    setAuthor('')
+    setImage('')
+    setCategory('')
   };
 
   return (
@@ -30,29 +30,29 @@ const Form = ( props ) => {
         <h2>Preencha os dados do livro:</h2>
         <TextField
           obrigatorio={true}
-          label="Titulo"
-          placeholder="Digite o titulo"
-          valor={titulo}
-          aoAlterado={(valor) => setTitulo(valor)}
+          label="Title"
+          placeholder="Digite o título"
+          valor={title}
+          aoAlterado={(valor) => setTitle(valor)}
         />
         <TextField
           obrigatorio={true}
           label="Autor"
           placeholder="Digite o autor"
-          valor={autor}
-          aoAlterado={(valor) => setAutor(valor)}
+          valor={author}
+          aoAlterado={(valor) => setAuthor(valor)}
         />
         <TextField
           label="Imagem"
-          placeholder="Informe o endereço da imagem "
-          aoAlterado={(valor) => setImagem(valor)}
+          placeholder="Informe o endereço da imagem"
+          aoAlterado={(valor) => setImage(valor)}
         />
         <DropdownList
           obrigatorio={true}
           label="Categorias"
           items={props.categories}
-          valor={categoria}
-          aoAlterado={(valor) => setCategoria(valor)}
+          valor={category}
+          aoAlterado={(valor) => setCategory(valor)}
         />
         <Button texto="Salvar livro" />
       </form>

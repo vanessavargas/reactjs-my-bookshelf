@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Banner from "./componentes/Banner";
 import Form from "./componentes/Form";
-import Rodape from "./componentes/Rodape";
+import Rodape from "./componentes/Footer/Footer";
 import Category from "./componentes/Category";
+import Button from "./componentes/Button";
 
 function App() {
   const categories = [
@@ -25,6 +26,11 @@ function App() {
       nome: "Lógica na Ficção: Desafios Mentais",
       corPrimaria: "#FFF5F9",
       corSecundaria: "#FFEEF4",
+    },
+    {
+      nome: "Outros",
+      corPrimaria: "#C4D4B5",
+      corSecundaria: "#94A684",
     },
   ];
 
@@ -143,22 +149,44 @@ function App() {
   ];
 
   const [books, setBooks] = useState(inicial);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const deleteBook = () => {
-    console.log("deletando book");
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const deleteBook = (book) => {
+    const newListBooks = books.filter((bookExists) => bookExists !== book);
+  setBooks(newListBooks);
   }
 
   const aoNovoBookAdicionado = (book) => {
-    debugger
     setBooks([...books, book])
-  }
+  }  
 
   return (
     <div>
-      <Banner />
+      <Banner openModal={openModal} />
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+          <Form
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        categories={categories.map((category) => category.nome)}
+        aoSalvar={book => aoNovoBookAdicionado(book)}/>
+      <Button texto="Fechar Modal" onClick={closeModal} />
+      </div>
+        </div>
+      )}
+      
       <Form
         categories={categories.map((category) => category.nome)}
-        aoBookCadastrado={book => aoNovoBookAdicionado(book)}/>
+        aoSalvar={book => aoNovoBookAdicionado(book)}/>
       <section className="categories">
         <h1>Minha estante</h1>
         {categories.map((category, indice) => (
