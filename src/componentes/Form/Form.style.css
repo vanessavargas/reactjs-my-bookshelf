@@ -11,4 +11,10 @@
 .btn-form {
   display: flex;
   justify-content: center;
+  gap: 12px;
+}
+
+.form__category {
+  display: flex;
+  justify-content: space-between;
 }

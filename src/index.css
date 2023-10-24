@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #171903; /* //verde musgo */
-  --secondary-color: #ba8d90; /* //rose */
-  --tertiary-color: #bba99f; /* //caqui */
-  --light-color: #f5f5f5; /* //branco */
-  --dark-color: #59546c; /* //violeta escuro */
+  --primary-color: #171903; /* verde musgo */
+  --secondary-color: #ba8d90; /* rose */
+  --tertiary-color: #bba99f; /* caqui */
+  --light-color: #f5f5f5; /* branco */
+  --dark-color: #59546c; /* violeta escuro */
   --font-normal: normal 1.8rem Montserrat;
   --font-destaque: 600 1.8rem/150% Montserrat;
 }
@@ -44,20 +44,24 @@ h2 {
 }
 
 .button-form {
-  background: var(--primary-color);
+  background: var(--light-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 240px;
   border-radius: 10px;
   font-size: 18px;
   padding: 12px 60px;
-  color: var(--light-color);
+  color: var(--primary-color);
   cursor: pointer;
   font-weight: bold;
-  border: none;
+  border: solid 1px var(--primary-color);
   margin-top: 16px;
 }
 
 .button-form:hover {
-  background-color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  color: var(--light-color);
 }
 
 .modal {

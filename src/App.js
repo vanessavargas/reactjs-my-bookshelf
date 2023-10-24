@@ -191,6 +191,7 @@ function App() {
 
   const bookAdded = (book) => {
     setBooks([...books, book]);
+    setShowModal(false);
   };
 
   function changeColorCategory(color, id) {
@@ -211,6 +212,10 @@ function App() {
     }))
   }
 
+  function registerCategory({ name, color }) {
+    setCategories([...categories, { name, color, id: uuidv4() }]);
+  }  
+
   return (
     <div>
       <Banner />
@@ -225,6 +230,7 @@ function App() {
           <div className="modal-content">
             <div className="space-modal">
               <Form
+                addCategory={registerCategory}
                 categories={categories.map((category) => category.name)}
                 addBook={(book) => bookAdded(book)}
               />
