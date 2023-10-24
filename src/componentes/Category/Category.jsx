@@ -2,7 +2,7 @@ import Book from "../Book";
 import "./Category.style.css";
 import hexToRgba from "hex-to-rgba";
 
-const Category = ({ category, books, deleteBook, changeColor }) => {
+const Category = ({ category, books, deleteBook, changeColor, clickFavorite }) => {
   const css = { backgroundImage: 'url(../../../assets/image/fundo.png)', backgroundColor: hexToRgba(category.color, '0.6')};
 
   return books.length > 0 ? (
@@ -16,6 +16,7 @@ const Category = ({ category, books, deleteBook, changeColor }) => {
             book={book}
             bgColor={category.color}
             deleteBook={deleteBook}
+            clickFavorite={clickFavorite}
           />
         ))}
       </div>
