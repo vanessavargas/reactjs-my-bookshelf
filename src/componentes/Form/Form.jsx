@@ -10,9 +10,9 @@ const Form = ( props ) => {
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
 
-  const aoSalvar = (evento) => {
+  const addBook = (evento) => {
     evento.preventDefault();
-    props.aoSalvar({
+    props.addBook({
       title,
       author,
       image,
@@ -26,7 +26,7 @@ const Form = ( props ) => {
 
   return (
     <section className="form">
-      <form onSubmit={aoSalvar}>
+      <form onSubmit={addBook}>
         <h2>Preencha os dados do livro:</h2>
         <TextField
           obrigatorio={true}

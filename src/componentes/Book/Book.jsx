@@ -1,11 +1,11 @@
 import "./Book.style.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-const Book = ({ book, corDeFundo, aoDeletar }) => {
+const Book = ({ book, bgColor, deleteBook }) => {
   return (
     <div className="book">
-      <AiFillCloseCircle size={25} className="book__delete" onClick={() => aoDeletar(book)}/>
-      <div className="book__header" style={{ backgroundColor: corDeFundo }}>
+      <AiFillCloseCircle size={25} className="book__delete" onClick={() => deleteBook(book)}/>
+      <div className="book__header" style={{ backgroundColor: bgColor }}>
         <img src={book.image} alt={book.title} />
       </div>
       <div className="book__footer">
