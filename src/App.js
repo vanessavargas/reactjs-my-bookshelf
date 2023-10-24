@@ -3,10 +3,9 @@ import Banner from "./componentes/Banner";
 import Form from "./componentes/Form";
 import Category from "./componentes/Category";
 import Footer from "./componentes/Footer/Footer";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-
   const [categories, setCategories] = useState([
     {
       id: uuidv4(),
@@ -37,7 +36,8 @@ function App() {
 
   const inicial = [
     {
-      id: uuidv4,
+      id: 1,
+      favorite: false,
       title: "Poder Sem Limites",
       author: "Tony Robbins",
       image:
@@ -45,7 +45,8 @@ function App() {
       category: categories[0].name,
     },
     {
-      id: uuidv4,
+      id: 2,
+      favorite: false,
       title: "Atenção Plena: Mindfulness",
       author: "D. Penman, M. Williams",
       image:
@@ -53,7 +54,8 @@ function App() {
       category: categories[0].name,
     },
     {
-      id: uuidv4,
+      id: 3,
+      favorite: false,
       title: "Mais Esperto que o Diabo",
       author: "Napoleon Hill",
       image:
@@ -61,7 +63,8 @@ function App() {
       category: categories[0].name,
     },
     {
-      id: uuidv4,
+      id: 4,
+      favorite: false,
       title: "O Poder do Hábito",
       author: "Charles Duhigg",
       image:
@@ -69,7 +72,8 @@ function App() {
       category: categories[0].name,
     },
     {
-      id: uuidv4,
+      id: 5,
+      favorite: false,
       title: "Clean Code",
       author: "Robert C. Martin",
       image:
@@ -77,7 +81,8 @@ function App() {
       category: categories[1].name,
     },
     {
-      id: uuidv4,
+      id: 6,
+      favorite: false,
       title: "Padrões de Projetos",
       author: "Erich Gamma e outros",
       image:
@@ -85,7 +90,8 @@ function App() {
       category: categories[1].name,
     },
     {
-      id: uuidv4,
+      id: 7,
+      favorite: false,
       title: "Refatoração",
       author: "Martin Fowler",
       image:
@@ -93,7 +99,8 @@ function App() {
       category: categories[1].name,
     },
     {
-      id: uuidv4,
+      id: 8,
+      favorite: false,
       title: "O Programador Pragmático",
       author: "A. Hunt, D. Thomas",
       image:
@@ -101,14 +108,16 @@ function App() {
       category: categories[1].name,
     },
     {
-      id: uuidv4,
+      id: 9,
+      favorite: false,
       title: "Não Me Faça Pensar",
       author: "Steve Krug",
       image: "https://m.media-amazon.com/images/I/51i8-f+QMFL._SY385_.jpg",
       category: categories[2].name,
     },
     {
-      id: uuidv4,
+      id: 10,
+      favorite: false,
       title: "A Psicologia das Cores",
       author: "Eva Heller",
       image:
@@ -116,21 +125,24 @@ function App() {
       category: categories[2].name,
     },
     {
-      id: uuidv4,
+      id: 11,
+      favorite: false,
       title: "O Teste da Mãe",
       author: "Rob Fitzpatrick",
       image: "https://m.media-amazon.com/images/I/6163jHQ-adL._SY385_.jpg",
       category: categories[2].name,
     },
     {
-      id: uuidv4,
+      id: 12,
+      favorite: false,
       title: "Roube Como um Artista",
       author: "Austin Kleon",
       image: "https://m.media-amazon.com/images/I/81FOzurNqvL._SY385_.jpg",
       category: categories[2].name,
     },
     {
-      id: uuidv4,
+      id: 13,
+      favorite: false,
       title: "AGATHA CHRISTIE",
       author: "Mistério no Caribe",
       image:
@@ -138,14 +150,16 @@ function App() {
       category: categories[3].name,
     },
     {
-      id: uuidv4,
+      id: 14,
+      favorite: false,
       title: "AGATHA CHRISTIE",
       author: "Morte na Rua Hickory",
       image: "https://m.media-amazon.com/images/I/81JIIC-o+fL._SL1500_.jpg",
       category: categories[3].name,
     },
     {
-      id: uuidv4,
+      id: 15,
+      favorite: false,
       title: "SIDNEY SHELDON",
       author: "A Outra Face",
       image:
@@ -153,7 +167,8 @@ function App() {
       category: categories[3].name,
     },
     {
-      id: uuidv4,
+      id: 16,
+      favorite: false,
       title: "KEN FOLLETT",
       author: "As espiãs do Dia D",
       image:
@@ -165,7 +180,7 @@ function App() {
   const [books, setBooks] = useState(inicial);
   const [showModal, setShowModal] = useState(false);
 
-  const handleButtonClick = () => {
+  const handleOpenModal = () => {
     setShowModal(true);
   };
 
@@ -189,44 +204,45 @@ function App() {
     );
   }
 
+  function addFavorite(id) {
+    setBooks(books.map(book => {
+      if(book.id === id) book.favorite = !book.favorite;
+      return book;
+    }))
+  }
+
   return (
     <div>
       <Banner />
       <div className="modal">
         <h1>Minha estante</h1>
-        <button className="button-form" onClick={handleButtonClick}>
+        <button className="button-form" onClick={handleOpenModal}>
           Cadastrar novo livro
         </button>
-        {showModal && (
-          <div className="modal__fixed">
-            <div className="modal__relative">
-              <div className="modal__rounded">
-                <h3 className="text-center">Insira um novo livro</h3>
-                <div className="space-y-6">
-                  <Form
-                    categories={categories.map((category) => category.name)}
-                    addBook={(book) => bookAdded(book)}
-                  />
-                  <button
-                    className="button-form"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </div>
+      </div>
+      {showModal && (
+        <div className="modal-popup">
+          <div className="modal-content">
+            <div className="space-modal">
+              <Form
+                categories={categories.map((category) => category.name)}
+                addBook={(book) => bookAdded(book)}
+              />
+              <button
+                className="button-form"
+                onClick={() => setShowModal(false)}
+              >
+                Cancelar
+              </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* <Form
-        categories={categories.map((category) => category.name)}
-        addBook={(book) => bookAdded(book)}
-      /> */}
       <section className="categories">
         {categories.map((category, indice) => (
           <Category
+          clickFavorite={addFavorite}
             changeColor={changeColorCategory}
             key={indice}
             category={category}
