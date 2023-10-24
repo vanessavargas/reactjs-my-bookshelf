@@ -1,6 +1,6 @@
 .category {
   text-align: center;
-  padding: 32px;
+  padding: 60px 32px;
   background-blend-mode: multiply;
   position: relative;
 }
@@ -16,6 +16,7 @@
 .category__books {
   display: flex;
   justify-content: space-around;
+  gap: 16px;
   margin-top: 32px;
   flex-wrap: wrap;
 }

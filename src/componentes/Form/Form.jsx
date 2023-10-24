@@ -4,7 +4,7 @@ import TextField from "../TextField";
 import DropdownList from "../DropdownList";
 import "./Form.style.css";
 
-const Form = ( props ) => {
+const Form = (props) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [image, setImage] = useState("");
@@ -17,11 +17,11 @@ const Form = ( props ) => {
       author,
       image,
       category,
-    })
-    setTitle('')
-    setAuthor('')
-    setImage('')
-    setCategory('')
+    });
+    setTitle("");
+    setAuthor("");
+    setImage("");
+    setCategory("");
   };
 
   return (
@@ -54,7 +54,9 @@ const Form = ( props ) => {
           valor={category}
           aoAlterado={(valor) => setCategory(valor)}
         />
-        <Button texto="Salvar livro" />
+        <div className="btn-form">
+          <Button texto="Salvar livro" />
+        </div>
       </form>
     </section>
   );
