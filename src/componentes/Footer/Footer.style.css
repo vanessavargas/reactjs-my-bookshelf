@@ -19,3 +19,11 @@
 .footer__logo {
   height: 100px;
 }
+
+@media (max-width: 768px) { 
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+}
