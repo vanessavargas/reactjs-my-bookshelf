@@ -37,7 +37,24 @@ Throughout the development of this project, the following skills were applied:
 - Utilization of closures
 - Code refactoring for improved readability and maintenance
 
+### Getting Started
+- Clone the Repository:
+  ```
+  git clone https://github.com/vanessavargas/reactjs-my-bookshelf.git
+  cd reactjs-my-bookshelf
+  ```
+  
+- Install Dependencies:
+  ```
+  npm install
+  ```
+
+- Run the Application:
+  ```
+  npm start
+  ```
+
 <hr>
 <div align="center">
-Developed with ❤️ by VanessaVargas
+    Developed with ❤️ by VanessaVargas
 </div>
